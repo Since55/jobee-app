@@ -1,0 +1,47 @@
+{
+    "Create forceSnapshotTest": {
+        "prefix":"fSnapTest",
+        "body":[
+            "\nforceSnapshotTest(",
+                "\t${1:Type},",
+                "\t'${2:state}',",
+                "\t(tester) async => const TestApp($3),",
+            ");\n",
+        ],
+        "description": "force snapshot test"
+    },
+    "Create snapshotTest": {
+        "prefix":"snapTest",
+        "body":[
+            "\nsnapshotTest(",
+                "\t${1:Type},",
+                "\t'${2:state}',",
+                "\t(tester, snapshotName) async {",
+                    "\t\tawait tester.pumpWidget(TestApp(${3:Widget}));",
+                    "\t\tawait screenMatchesGolden(tester, snapshotName);",
+                "\t},",
+            ");\n",
+        ],
+        "description": "force snapshot test"
+    },
+    "Serializer toJson & fromJson template": {
+        "prefix": "serialize",
+        "body": [
+            "factory $1.fromJson(Map<String, dynamic> json) => _$$1FromJson(json);",
+            "Map<String, dynamic> toJson() => _$$1ToJson(this);",
+        ], 
+        "description": "toJson & fromJson methods for serializable class"
+    },
+    "Sized box with height": {
+        "prefix": "szh",
+        "body": [
+            "SizedBox(height: $1),"
+        ],
+    },
+    "Sized box with width": {
+        "prefix": "szw",
+        "body": [
+            "SizedBox(width: $1),"
+        ],
+    }
+}
