@@ -29,15 +29,10 @@ class AppRouter {
           ),
           GoRoute(
             path: AccountPage.path,
-            pageBuilder: (context, state) {
-              final auth = AppBlocProvider.find<AuthCubit>();
-              Widget child = const AccountPage();
-              if (!auth.state.isAuthorized) child = const LoginPage();
-              return CustomTransitionPage(
-                child: child,
-                transitionsBuilder: _fadeTransition,
-              );
-            },
+            pageBuilder: (context, state) => const CustomTransitionPage(
+              child: AccountPage(),
+              transitionsBuilder: _fadeTransition,
+            ),
           ),
         ],
       ),

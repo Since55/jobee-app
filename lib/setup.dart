@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobee_app/core/app_locale.dart';
@@ -9,7 +10,6 @@ class SetupApp extends StatelessWidget {
   const SetupApp({super.key, required this.builder});
 
   Widget _buildApp(BuildContext context) {
-    // Intl.defaultLocale = context.locale.languageCode;
     return builder(context);
   }
 

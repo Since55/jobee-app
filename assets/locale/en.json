@@ -3,5 +3,10 @@
     "search": "Search",
     "categories": "Categories",
     "home": "Home",
-    "recent_orders": "Recent orders"
+    "recent_orders": "Recent orders",
+    "login": "Login",
+    "email": "Email",
+    "password": "Password",
+    "log_in": "Log in",
+    "register": "Register"
 }

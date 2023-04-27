@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobee_app/pages/login_page/login_cubit.dart';
+import 'package:jobee_app/pages/login_page/views/login_view.dart';
 
 class LoginPage extends StatelessWidget {
   static const path = '/login';
@@ -6,6 +9,9 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text(path));
+    return BlocProvider(
+      create: (context) => LoginCubit(),
+      child: const Scaffold(body: LoginView()),
+    );
   }
 }

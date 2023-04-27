@@ -13,7 +13,7 @@ class AppLocale {
 
   static List<Locale> supportedLocales = [
     const Locale.fromSubtags(languageCode: 'en'),
-    const Locale.fromSubtags(languageCode: 'ua'),
+    const Locale.fromSubtags(languageCode: 'uk'),
   ];
 
   static List<LocalizationsDelegate> localizationsDelegates =
