@@ -25,7 +25,7 @@ class AppTheme {
   );
 
   static TextStyle applyFontWeight(TextStyle style) =>
-      style.merge(GoogleFonts.exo2(fontWeight: style.fontWeight));
+      style.merge(GoogleFonts.inter(fontWeight: style.fontWeight));
 
   static ThemeData buildTheme(BuildContext context) {
     return ThemeData(
@@ -43,6 +43,19 @@ class AppTheme {
           fontWeight: FontWeight.w600,
         ),
       ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          enableFeedback: true,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          backgroundColor: colors.secondaryBgColor,
+          selectedIconTheme: IconThemeData(
+            size: 32,
+            color: colors.primaryColor,
+          ),
+          unselectedIconTheme: IconThemeData(
+            size: 32,
+            color: colors.primaryBgColor,
+          )),
       textSelectionTheme: TextSelectionThemeData(
         selectionColor: colors.primaryColor.withOpacity(.4),
         cursorColor: colors.primaryTextColor,
@@ -51,7 +64,7 @@ class AppTheme {
       ),
       textTheme: Theme.of(context)
           .textTheme
-          .merge(GoogleFonts.exo2TextTheme())
+          .merge(GoogleFonts.interTextTheme())
           .apply(bodyColor: colors.primaryTextColor, fontSizeFactor: 1),
     );
   }
