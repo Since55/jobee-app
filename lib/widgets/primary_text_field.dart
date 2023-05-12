@@ -8,6 +8,7 @@ import 'package:jobee_app/core/app_theme.dart';
 class PrimaryTextField extends StatefulWidget {
   final String? hint;
   final bool obscure;
+  final int? maxLines;
   final Widget? prefix;
   final Widget? suffix;
   final int? maxLength;
@@ -26,6 +27,7 @@ class PrimaryTextField extends StatefulWidget {
     this.hint,
     this.prefix,
     this.suffix,
+    this.maxLines,
     this.onChange,
     this.fillColor,
     this.padding,
@@ -114,9 +116,8 @@ class PrimaryTextFieldState extends State<PrimaryTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AnimatedContainer(
-          height: 48,
           duration: const Duration(milliseconds: 300),
-          padding: widget.padding ?? const EdgeInsets.symmetric(horizontal: 16),
+          padding: widget.padding ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           decoration: BoxDecoration(
             boxShadow: [
               if (_focusNode.hasFocus)
@@ -149,9 +150,9 @@ class PrimaryTextFieldState extends State<PrimaryTextField> {
                   obscuringCharacter: '*',
                   textInputAction: widget.textInputAction,
                   textAlignVertical: TextAlignVertical.center,
+                  maxLines: widget.maxLines ?? 1,
                   decoration: InputDecoration(
                     isDense: true,
-                    counterText: '',
                     hintText: widget.hint,
                     enabled: widget.enabled,
                     border: InputBorder.none,

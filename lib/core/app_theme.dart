@@ -7,9 +7,11 @@ class AppColorSchema {
   final Color primaryTextColor;
   final Color primaryBgColor;
   final Color secondaryBgColor;
+  final Color disabledColor;
 
   const AppColorSchema({
     required this.primaryColor,
+    required this.disabledColor,
     required this.primaryBgColor,
     required this.secondaryBgColor,
     required this.primaryTextColor,
@@ -22,6 +24,7 @@ class AppTheme {
     primaryTextColor: Color(0xFF23212C),
     secondaryBgColor: Color(0xFF23212C),
     primaryBgColor: Colors.white,
+    disabledColor: Color.fromARGB(255, 94, 94, 94)
   );
 
   static TextStyle applyFontWeight(TextStyle style) =>

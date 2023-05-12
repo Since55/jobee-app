@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jobee_app/pages/account_page/account_page.dart';
 import 'package:jobee_app/pages/home_page/home_page.dart';
+import 'package:jobee_app/pages/user_orders/user_orders_page.dart';
 
 class MainState {
   final int currentPageIdx;
@@ -25,6 +26,7 @@ class MainCubit extends Cubit<MainState> {
 
   static const _routes = [
     HomePage.path,
+    UserOrdersPage.path,
     AccountPage.path,
   ];
 

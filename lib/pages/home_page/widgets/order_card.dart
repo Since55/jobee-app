@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jobee_app/core/app_theme.dart';
 import 'package:jobee_app/models/order.dart';
+import 'package:jobee_app/pages/order_page/order_page.dart';
 import 'package:jobee_app/widgets/material_inkwell.dart';
 import 'package:jobee_app/widgets/svg_view.dart';
 
@@ -115,7 +117,8 @@ class OrderCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: MaterialInkWell(
-        onTap: () {},
+        onTap: () =>
+            context.goNamed(OrderPage.path, params: {'orderId': '${order.id}'}),
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
         borderRadius: BorderRadius.circular(16),
         child: Column(

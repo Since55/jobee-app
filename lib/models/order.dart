@@ -1,5 +1,6 @@
 class Order {
   final int id;
+  final num? price;
   final String userId;
   final int categoryId;
   final String icon;
@@ -20,6 +21,7 @@ class Order {
     required this.location,
     required this.description,
     this.deadline,
+    this.price,
     required this.createdAt,
   });
 
@@ -34,9 +36,11 @@ class Order {
     String? description,
     DateTime? deadline,
     DateTime? createdAt,
+    num? price,
   }) {
     return Order(
       id: id ?? this.id,
+      price: price ?? this.price,
       userId: userId ?? this.userId,
       categoryId: categoryId ?? this.categoryId,
       icon: icon ?? this.icon,
@@ -55,6 +59,7 @@ class Order {
       'userId': userId,
       'categoryId': categoryId,
       'icon': icon,
+      'price': price,
       'title': title,
       'userName': userName,
       'location': location,
@@ -68,6 +73,7 @@ class Order {
     return Order(
       id: map['id']?.toInt() ?? 0,
       userId: map['user_id'],
+      price: map['price'],
       categoryId: map['category_id']?.toInt() ?? 0,
       icon: map['icon'] ?? '',
       title: map['title'] ?? '',

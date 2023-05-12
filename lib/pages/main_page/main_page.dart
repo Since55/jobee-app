@@ -27,6 +27,11 @@ class MainPage extends StatelessWidget {
                   backgroundColor: AppTheme.colors.primaryTextColor,
                 ),
                 BottomNavigationBarItem(
+                  label: 'orders',
+                  icon: const Icon(Icons.list_alt),
+                  backgroundColor: AppTheme.colors.primaryTextColor,
+                ),
+                BottomNavigationBarItem(
                   label: 'account',
                   icon: const Icon(Icons.account_circle),
                   backgroundColor: AppTheme.colors.primaryTextColor,

@@ -15,9 +15,6 @@ class AuthApi {
   static Future<UserData?> getUser(String userId) async {
     final response =
         await ApiClient.client.from('users').select('*').eq('user_id', userId);
-    // .withConverter(
-    //   (data) => UserData.fromMap(data as Map<String, dynamic>),
-    // );
 
     return UserData.fromMap((response as List).first as Map<String, dynamic>);
   }

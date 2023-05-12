@@ -55,7 +55,7 @@ class PrimaryButton extends StatelessWidget {
         splashColor: Colors.deepOrange,
         textColor: AppTheme.colors.primaryBgColor,
         loaderColor: AppTheme.colors.primaryColor,
-        disabledColor: AppTheme.colors.primaryColor.withOpacity(.7),
+        disabledColor: AppTheme.colors.disabledColor,
         disabledTextColor: const Color.fromRGBO(211, 211, 211, 1),
       );
 
@@ -153,7 +153,7 @@ class PrimaryButton extends StatelessWidget {
                     text ?? '',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       color: _textColor,
                       fontWeight: FontWeight.bold,
                     ),

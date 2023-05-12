@@ -17,9 +17,6 @@ class LoginView extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               color: AppTheme.colors.primaryColor,
-              borderRadius: const BorderRadius.vertical(
-                bottom: Radius.circular(26),
-              ),
             ),
             child: SafeArea(
               bottom: false,

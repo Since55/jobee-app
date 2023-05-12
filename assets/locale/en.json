@@ -8,5 +8,16 @@
     "email": "Email",
     "password": "Password",
     "log_in": "Log in",
-    "register": "Register"
+    "register": "Register",
+    "logout": "Logout",
+    "due_by": "Due by",
+    "published": "Published",
+    "author": "Author",
+    "apply": "Apply",
+    "garden": "Garden",
+    "plumber": "Plumber",
+    "add_information": "Add information",
+    "offer_price": "Offer price",
+    "how_to_contact_you": "How author can contact You?",
+    "send": "Send"
 }

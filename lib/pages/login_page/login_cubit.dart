@@ -43,10 +43,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(state.copyWith(isLoggingIn: true));
     try {
       final user = await AuthApi.login(email.text, password.text);
-      if (user != null) {
-        await _authCubit.auth(user);
-        if (context.mounted) context.go(AccountPage.path);
-      }
+      if (user != null) await _authCubit.auth(user);
     } finally {
       emit(state.copyWith(isLoggingIn: false));
     }

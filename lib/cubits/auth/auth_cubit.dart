@@ -4,7 +4,13 @@ import 'package:jobee_app/cubits/auth/auth_state.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthCubit extends Cubit<AppAuthState> {
-  AuthCubit() : super(AppAuthState());
+  AuthCubit() : super(AppAuthState()) {
+    init();
+  }
+
+  void init() {
+    updateUser();
+  }
 
   Future<void> auth(User auth) async {
     updateUser();
