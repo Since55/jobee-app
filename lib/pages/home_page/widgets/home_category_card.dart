@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jobee_app/core/app_theme.dart';
@@ -29,7 +28,7 @@ class HomeCategoryCard extends StatelessWidget {
           SvgPicture.network(category.icon, width: 56, height: 56),
           const SizedBox(height: 8),
           Text(
-            category.name.tr(),
+            category.localizedName,
             style: TextStyle(
               color: AppTheme.colors.primaryBgColor,
             ),

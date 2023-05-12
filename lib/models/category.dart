@@ -1,14 +1,22 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class Category {
   final int id;
   final String name;
+  final Map<String, dynamic> localizedNames;
   final String icon;
   final List<Category>? subcategories;
+
+  String get localizedName =>
+      localizedNames[WidgetsBinding.instance.window.locale.languageCode] ??
+      toBeginningOfSentenceCase(name);
 
   Category({
     required this.id,
     required this.name,
+    required this.localizedNames,
     required this.icon,
     this.subcategories,
   });
@@ -18,10 +26,12 @@ class Category {
     String? name,
     String? icon,
     List<Category>? subcategories,
+    Map<String, dynamic>? localizedNames,
   }) {
     return Category(
       id: id ?? this.id,
       name: name ?? this.name,
+      localizedNames: localizedNames ?? this.localizedNames,
       icon: icon ?? this.icon,
       subcategories: subcategories ?? this.subcategories,
     );
@@ -40,6 +50,7 @@ class Category {
     return Category(
       id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
+      localizedNames: map['localized_names'],
       icon: map['icon'] ?? '',
       subcategories: map['subcategories'] != null
           ? List<Category>.from(

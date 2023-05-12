@@ -5,6 +5,7 @@ import 'package:jobee_app/cubits/auth/auth_cubit.dart';
 import 'package:jobee_app/models/arguments.dart';
 import 'package:jobee_app/pages/account_page/account_page.dart';
 import 'package:jobee_app/pages/apply_page/apply_page.dart';
+import 'package:jobee_app/pages/create_order_page/create_order_page.dart';
 import 'package:jobee_app/pages/home_page/home_page.dart';
 import 'package:jobee_app/pages/login_page/login_page.dart';
 import 'package:jobee_app/pages/main_page/main_page.dart';
@@ -40,6 +41,11 @@ class AppRouter {
               transitionsBuilder: _fadeTransition,
             ),
             routes: [
+              GoRoute(
+                name: CreateOrderPage.path,
+                path: CreateOrderPage.path,
+                builder: (context, state) => const CreateOrderPage(),
+              ),
               GoRoute(
                 name: OrderPage.path,
                 path: '${OrderPage.path}:orderId',

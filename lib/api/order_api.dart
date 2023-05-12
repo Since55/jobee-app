@@ -7,6 +7,7 @@ class OrderApi {
     final result = await ApiClient.client
         .from('orders')
         .select('*')
+        .eq('active', true)
         .order('created_at')
         .range(0, 10)
         .withConverter<List<Order>>(
@@ -31,7 +32,24 @@ class OrderApi {
       orders = orders.textSearch('title', query);
     }
 
-    final result = await orders.order('created_at').withConverter<List<Order>>(
+    final result = await orders
+        .eq('active', true)
+        .order('created_at')
+        .withConverter<List<Order>>(
+          (data) => (data as List)
+              .map((e) => Order.fromMap(e as Map<String, dynamic>))
+              .toList(),
+        );
+
+    return result;
+  }
+
+  static Future<List<Order>> getUserOrders() async {
+    final result = await ApiClient.client
+        .from('orders')
+        .select('*')
+        .eq('user_id', ApiClient.client.auth.currentUser?.id)
+        .withConverter<List<Order>>(
           (data) => (data as List)
               .map((e) => Order.fromMap(e as Map<String, dynamic>))
               .toList(),
@@ -45,5 +63,11 @@ class OrderApi {
         await ApiClient.client.from('orders').select('*').eq('id', orderId);
 
     return Order.fromMap((result as List).first as Map<String, dynamic>);
+  }
+
+  static Future<void> toggleOrderStatus(int orderId, bool status) async {
+    await ApiClient.client
+        .from('orders')
+        .update({'active': status}).eq('id', orderId);
   }
 }

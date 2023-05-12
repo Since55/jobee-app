@@ -21,6 +21,7 @@ class PrimaryTextField extends StatefulWidget {
   final void Function(String value)? onChange;
   final bool enabled;
   final TextInputAction? textInputAction;
+  final void Function()? onTap;
 
   const PrimaryTextField({
     super.key,
@@ -30,6 +31,7 @@ class PrimaryTextField extends StatefulWidget {
     this.maxLines,
     this.onChange,
     this.fillColor,
+    this.onTap,
     this.padding,
     this.validator,
     this.maxLength,
@@ -115,73 +117,64 @@ class PrimaryTextFieldState extends State<PrimaryTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          padding: widget.padding ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          decoration: BoxDecoration(
-            boxShadow: [
-              if (_focusNode.hasFocus)
-                const BoxShadow(
-                  color: Colors.black12,
-                  spreadRadius: 2,
-                  blurRadius: 1.2,
-                ),
-            ],
-            borderRadius: BorderRadius.circular(30),
-            color: _getColor(),
-            border: Border.all(color: _getBorderColor()),
-          ),
-          child: Row(
-            children: [
-              if (widget.prefix != null) ...[
-                widget.prefix!,
-                const SizedBox(width: 8),
+        GestureDetector(
+          onTap: widget.onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            padding: widget.padding ??
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            decoration: BoxDecoration(
+              boxShadow: [
+                if (_focusNode.hasFocus)
+                  const BoxShadow(
+                    color: Colors.black12,
+                    spreadRadius: 2,
+                    blurRadius: 1.2,
+                  ),
               ],
-              Expanded(
-                child: TextFormField(
-                  style: _textStyle,
-                  focusNode: _focusNode,
-                  controller: controller,
-                  onChanged: _handleChange,
-                  maxLength: widget.maxLength,
-                  keyboardType: widget.keyboardType,
-                  inputFormatters: widget.formatters,
-                  obscureText: widget.obscure,
-                  obscuringCharacter: '*',
-                  textInputAction: widget.textInputAction,
-                  textAlignVertical: TextAlignVertical.center,
-                  maxLines: widget.maxLines ?? 1,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    hintText: widget.hint,
-                    enabled: widget.enabled,
-                    border: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.zero,
-                    errorStyle: const TextStyle(fontSize: 0, height: 0),
+              borderRadius: BorderRadius.circular(30),
+              color: _getColor(),
+              border: Border.all(color: _getBorderColor()),
+            ),
+            child: Row(
+              children: [
+                if (widget.prefix != null) ...[
+                  widget.prefix!,
+                  const SizedBox(width: 8),
+                ],
+                Expanded(
+                  child: TextFormField(
+                    style: _textStyle,
+                    focusNode: _focusNode,
+                    controller: controller,
+                    onChanged: _handleChange,
+                    maxLength: widget.maxLength,
+                    keyboardType: widget.keyboardType,
+                    inputFormatters: widget.formatters,
+                    obscureText: widget.obscure,
+                    obscuringCharacter: '*',
+                    textInputAction: widget.textInputAction,
+                    textAlignVertical: TextAlignVertical.center,
+                    maxLines: widget.maxLines ?? 1,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      hintText: widget.hint,
+                      enabled: widget.enabled,
+                      border: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      contentPadding: EdgeInsets.zero,
+                      errorStyle: const TextStyle(fontSize: 0, height: 0),
+                    ),
                   ),
                 ),
-              ),
-              if (widget.suffix != null) ...[
-                const SizedBox(width: 8),
-                widget.suffix!,
+                if (widget.suffix != null) ...[
+                  const SizedBox(width: 8),
+                  widget.suffix!,
+                ],
               ],
-            ],
+            ),
           ),
         ),
-        // if (errorMessage != null && errorMessage!.isNotEmpty) ...[
-        //   SizedBox(height: 4.h),
-        //   Padding(
-        //     padding: EdgeInsets.only(left: 16.w),
-        //     child: Text(
-        //       errorMessage!,
-        //       style: TextStyle(
-        //         fontSize: 12.sp,
-        //         color: AppTheme.colors.errorColor,
-        //       ),
-        //     ),
-        //   ),
-        // ],
       ],
     );
   }

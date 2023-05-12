@@ -8,38 +8,42 @@ class Application {
   final String? text;
   final num? price;
   final String contacts;
+  final String userName;
   final String forUserId;
 
   Application({
     this.id,
     required this.orderId,
     required this.userId,
-    required this.forUserId,
     this.createdAt,
     this.text,
     this.price,
     required this.contacts,
+    required this.userName,
+    required this.forUserId,
   });
 
   Application copyWith({
     int? id,
     int? orderId,
     String? userId,
-    String? forUserId,
     DateTime? createdAt,
     String? text,
     num? price,
     String? contacts,
+    String? userName,
+    String? forUserId,
   }) {
     return Application(
       id: id ?? this.id,
       orderId: orderId ?? this.orderId,
       userId: userId ?? this.userId,
-      forUserId: forUserId ?? this.forUserId,
       createdAt: createdAt ?? this.createdAt,
       text: text ?? this.text,
       price: price ?? this.price,
       contacts: contacts ?? this.contacts,
+      userName: userName ?? this.userName,
+      forUserId: forUserId ?? this.forUserId,
     );
   }
 
@@ -48,11 +52,12 @@ class Application {
       if (id != null) 'id': id,
       'order_id': orderId,
       'user_id': userId,
-      'for_user_id': forUserId,
-      if (createdAt != null) 'created_at': createdAt?.toString(),
+      if (createdAt != null) 'created_at': createdAt?.millisecondsSinceEpoch,
       'text': text,
       'price': price,
       'contacts': contacts,
+      'user_name': userName,
+      'for_user_id': forUserId,
     };
   }
 
@@ -61,13 +66,12 @@ class Application {
       id: map['id']?.toInt(),
       orderId: map['order_id']?.toInt() ?? 0,
       userId: map['user_id'] ?? '',
-      forUserId: map['for_user_id'] ?? '',
-      createdAt: map['created_at'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['createdAt'])
-          : null,
+      createdAt: DateTime.tryParse(map['created_at']),
       text: map['text'],
       price: map['price'],
       contacts: map['contacts'] ?? '',
+      userName: map['user_name'] ?? '',
+      forUserId: map['for_user_id'] ?? '',
     );
   }
 
@@ -78,7 +82,7 @@ class Application {
 
   @override
   String toString() {
-    return 'Application(id: $id, orderId: $orderId, userId: $userId, createdAt: $createdAt, text: $text, price: $price, contacts: $contacts)';
+    return 'Application(id: $id, orderId: $orderId, userId: $userId, createdAt: $createdAt, text: $text, price: $price, contacts: $contacts, userName: $userName, forUserId: $forUserId)';
   }
 
   @override
@@ -92,7 +96,9 @@ class Application {
         other.createdAt == createdAt &&
         other.text == text &&
         other.price == price &&
-        other.contacts == contacts;
+        other.contacts == contacts &&
+        other.userName == userName &&
+        other.forUserId == forUserId;
   }
 
   @override
@@ -103,6 +109,8 @@ class Application {
         createdAt.hashCode ^
         text.hashCode ^
         price.hashCode ^
-        contacts.hashCode;
+        contacts.hashCode ^
+        userName.hashCode ^
+        forUserId.hashCode;
   }
 }

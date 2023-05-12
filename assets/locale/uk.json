@@ -19,5 +19,13 @@
     "add_information": "Додайте інформацію",
     "offer_price": "Запропонуйте ціну",
     "how_to_contact_you": "Як автор може до Вас звернутись?",
-    "send": "Надіслати"
+    "send": "Надіслати",
+    "no_orders": "Замовлень не знайдено :(",
+    "my_orders": "Мої замовлення",
+    "my_applications": "Мої заявки",
+    "offers_price": "Пропонує ціну",
+    "applications": "Заявки",
+    "close_order": "Закрити замовлення",
+    "reopen_order": "Відкрити замовлення",
+    "create_order": "Створити замовлення"
 }

@@ -1,6 +1,7 @@
 class Order {
   final int id;
   final num? price;
+  final bool active;
   final String userId;
   final int categoryId;
   final String icon;
@@ -12,6 +13,7 @@ class Order {
   final DateTime createdAt;
 
   Order({
+    this.active = true,
     required this.id,
     required this.userId,
     required this.categoryId,
@@ -37,9 +39,11 @@ class Order {
     DateTime? deadline,
     DateTime? createdAt,
     num? price,
+    bool? active,
   }) {
     return Order(
       id: id ?? this.id,
+      active: active ?? this.active,
       price: price ?? this.price,
       userId: userId ?? this.userId,
       categoryId: categoryId ?? this.categoryId,
@@ -56,21 +60,23 @@ class Order {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'userId': userId,
-      'categoryId': categoryId,
+      'user_id': userId,
+      'category_id': categoryId,
       'icon': icon,
       'price': price,
       'title': title,
-      'userName': userName,
+      'user_name': userName,
       'location': location,
       'description': description,
+      'active': active,
       'deadline': deadline?.millisecondsSinceEpoch,
-      'createdAt': createdAt.millisecondsSinceEpoch,
+      'created_at': createdAt.millisecondsSinceEpoch,
     };
   }
 
   factory Order.fromMap(Map<String, dynamic> map) {
     return Order(
+      active: map['active'] as bool,
       id: map['id']?.toInt() ?? 0,
       userId: map['user_id'],
       price: map['price'],
@@ -80,9 +86,8 @@ class Order {
       userName: map['user_name'] ?? '',
       location: map['location'] ?? '',
       description: map['description'] ?? '',
-      deadline: map['deadline'] != null
-          ? DateTime.tryParse(map['deadline'])
-          : null,
+      deadline:
+          map['deadline'] != null ? DateTime.tryParse(map['deadline']) : null,
       createdAt: DateTime.parse(map['created_at']),
     );
   }

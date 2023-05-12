@@ -5,6 +5,7 @@ class ContentBox extends StatelessWidget {
   final Widget? child;
   final Color? color;
   final double? width;
+  final EdgeInsetsGeometry? padding;
   final BorderRadius? borderRadius;
 
   const ContentBox({
@@ -12,6 +13,7 @@ class ContentBox extends StatelessWidget {
     this.color,
     this.width,
     this.borderRadius,
+    this.padding,
     super.key,
   });
 
@@ -19,7 +21,11 @@ class ContentBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: padding ??
+          const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
       decoration: BoxDecoration(
         borderRadius: borderRadius ?? BorderRadius.circular(16),
         color: color ?? AppTheme.colors.secondaryBgColor,

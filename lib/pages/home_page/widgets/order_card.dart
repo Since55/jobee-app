@@ -80,7 +80,7 @@ class OrderCard extends StatelessWidget {
 
   Widget _buildDeadline() {
     final deadlineFormat = DateFormat('dd.MM.yyyy');
-    final isUrgent = DateTime.now().difference(order.deadline!).inDays <= 3;
+    final isUrgent = order.deadline!.difference(DateTime.now()).inDays <= 3;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),

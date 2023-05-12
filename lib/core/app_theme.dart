@@ -20,18 +20,20 @@ class AppColorSchema {
 
 class AppTheme {
   static AppColorSchema colors = const AppColorSchema(
-    primaryColor: Color(0xFFFCB43A),
-    primaryTextColor: Color(0xFF23212C),
-    secondaryBgColor: Color(0xFF23212C),
-    primaryBgColor: Colors.white,
-    disabledColor: Color.fromARGB(255, 94, 94, 94)
-  );
+      primaryColor: Color(0xFFFCB43A),
+      primaryTextColor: Color(0xFF23212C),
+      secondaryBgColor: Color(0xFF23212C),
+      primaryBgColor: Colors.white,
+      disabledColor: Color.fromARGB(255, 94, 94, 94));
 
   static TextStyle applyFontWeight(TextStyle style) =>
       style.merge(GoogleFonts.inter(fontWeight: style.fontWeight));
 
   static ThemeData buildTheme(BuildContext context) {
     return ThemeData(
+      colorScheme: ColorScheme.light(
+        primary: colors.primaryColor,
+      ),
       brightness: Brightness.light,
       scaffoldBackgroundColor: colors.primaryBgColor,
       cupertinoOverrideTheme: CupertinoThemeData(

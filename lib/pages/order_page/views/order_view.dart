@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobee_app/core/app_theme.dart';
 import 'package:jobee_app/pages/order_page/container/author_card.dart';
+import 'package:jobee_app/pages/order_page/container/order_author_data.dart';
 import 'package:jobee_app/pages/order_page/order_cubit.dart';
 import 'package:jobee_app/widgets/content_box.dart';
 import 'package:jobee_app/widgets/page_loader.dart';
@@ -13,8 +14,8 @@ class OrderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<OrderCubit>();
-    final order = context.select((OrderCubit c) => c.state.order);
+    final cubit = context.watch<OrderCubit>();
+    final order = cubit.state.order;
     final dateFormat = DateFormat('dd.MM.yyyy, HH:mm');
 
     return PageLoader(
@@ -120,18 +121,24 @@ class OrderView extends StatelessWidget {
                           ],
                         ),
                       ),
+                      if (cubit.isAuthor)
+                        const Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: OrderAuthorData(),
+                        ),
                     ],
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: PrimaryButton(
-                  text: 'apply'.tr(),
-                  onTap: () => cubit.onApply(context),
+              if (!cubit.isAuthor)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16)
+                      .copyWith(bottom: 16),
+                  child: PrimaryButton(
+                    text: 'apply'.tr(),
+                    onTap: () => cubit.onApply(context),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
             ],
           ),
         );

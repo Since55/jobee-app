@@ -19,5 +19,13 @@
     "add_information": "Add information",
     "offer_price": "Offer price",
     "how_to_contact_you": "How author can contact You?",
-    "send": "Send"
+    "send": "Send",
+    "no_orders": "No orders found :(",
+    "my_orders": "My orders",
+    "my_applications": "My Applications",
+    "offers_price": "Offers a price",
+    "applications": "Applications",
+    "close_order": "Close order",
+    "reopen_order": "Reopen order",
+    "create_order": "Create order"
 }

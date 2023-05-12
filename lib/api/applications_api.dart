@@ -41,7 +41,7 @@ class ApplicationsApi {
     final result = await ApiClient.client
         .from(_tableName)
         .select('*')
-        .eq('user_id', ApiClient.client.auth.currentUser)
+        .eq('user_id', ApiClient.client.auth.currentUser?.id)
         .withConverter<List<Application>>(
           (data) => (data as List)
               .map((e) => Application.fromMap(e as Map<String, dynamic>))
