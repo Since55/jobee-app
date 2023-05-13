@@ -18,7 +18,6 @@ class OrderAuthorData extends StatelessWidget {
     final applications = cubit.state.applications;
 
     if (applications == null) return const Loader();
-    if (applications.isEmpty) return const NoApplications();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -27,21 +26,25 @@ class OrderAuthorData extends StatelessWidget {
           text: order!.active ? 'close_order'.tr() : 'reopen_order'.tr(),
         ),
         const SizedBox(height: 32),
-        Text(
-          'applications'.tr(),
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
+        if (applications.isEmpty)
+          const NoApplications()
+        else ...[
+          Text(
+            'applications'.tr(),
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        const SizedBox(height: 8),
-        ContentBox(
-          padding: const EdgeInsets.all(16.0),
-          child: ApplicationsList(
-            cubit.state.applications!,
-            physics: const NeverScrollableScrollPhysics(),
+          const SizedBox(height: 8),
+          ContentBox(
+            padding: const EdgeInsets.all(16.0),
+            child: ApplicationsList(
+              cubit.state.applications!,
+              physics: const NeverScrollableScrollPhysics(),
+            ),
           ),
-        ),
+        ]
       ],
     );
   }

@@ -12,6 +12,19 @@ class AuthApi {
     return response.user;
   }
 
+  static Future<User?> register(String email, String password) async {
+    final response = await ApiClient.client.auth.signUp(
+      email: email,
+      password: password,
+    );
+
+    return response.user;
+  }
+
+  static Future<void> createUser(UserData user) async {
+    await ApiClient.client.from('users').insert(user.toMap());
+  }
+
   static Future<UserData?> getUser(String userId) async {
     final response =
         await ApiClient.client.from('users').select('*').eq('user_id', userId);

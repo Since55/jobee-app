@@ -40,7 +40,7 @@ class OrdersView extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                     child: MaterialInkWell(
-                      onTap: () {},
+                      onTap: cubit.getOrders,
                       padding: const EdgeInsets.all(8),
                       borderRadius: BorderRadius.circular(100),
                       child: const Icon(Icons.search, color: Colors.white),

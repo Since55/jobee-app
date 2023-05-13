@@ -8,15 +8,18 @@ class NoOrders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ContentBox(
-      child: Center(
-        child: Text(
-          'no_orders'.tr(),
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: AppTheme.colors.primaryBgColor,
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: ContentBox(
+        child: Center(
+          child: Text(
+            'no_orders'.tr(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: AppTheme.colors.primaryBgColor,
+            ),
           ),
         ),
       ),

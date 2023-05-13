@@ -5,6 +5,7 @@ import 'package:jobee_app/api/auth_api.dart';
 import 'package:jobee_app/cubits/auth/auth_cubit.dart';
 import 'package:jobee_app/cubits/provider.dart';
 import 'package:jobee_app/pages/account_page/account_page.dart';
+import 'package:jobee_app/pages/home_page/home_page.dart';
 
 class LoginState {
   final bool isLoggingIn;
@@ -44,6 +45,7 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       final user = await AuthApi.login(email.text, password.text);
       if (user != null) await _authCubit.auth(user);
+      if (context.mounted) context.go(HomePage.path);
     } finally {
       emit(state.copyWith(isLoggingIn: false));
     }

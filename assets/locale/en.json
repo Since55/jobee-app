@@ -35,5 +35,8 @@
     "deadline": "Deadline",
     "description": "Description",
     "create": "Create",
-    "account": "Account"
+    "account": "Account",
+    "full_name": "Full name",
+    "phone": "Phone",
+    "no_applications": "No applications"
 }

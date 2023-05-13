@@ -11,6 +11,7 @@ import 'package:jobee_app/pages/login_page/login_page.dart';
 import 'package:jobee_app/pages/main_page/main_page.dart';
 import 'package:jobee_app/pages/order_page/order_page.dart';
 import 'package:jobee_app/pages/orders_page/orders_page.dart';
+import 'package:jobee_app/pages/register_page/register_page.dart';
 import 'package:jobee_app/pages/user_orders/user_orders_page.dart';
 
 class AppRouter {
@@ -18,7 +19,7 @@ class AppRouter {
   static final shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static Widget _authRoute(BuildContext context, Widget route) {
-    final auth = context.watch<AuthCubit>();
+    final auth = context.read<AuthCubit>();
 
     if (auth.state.isAuthorized) return route;
 
@@ -82,10 +83,17 @@ class AppRouter {
           ),
           GoRoute(
             path: AccountPage.path,
-            pageBuilder: (context, state) => const CustomTransitionPage(
-              child: AccountPage(),
+            pageBuilder: (context, state) => CustomTransitionPage(
+              child: _authRoute(context, const AccountPage()),
               transitionsBuilder: _fadeTransition,
             ),
+            routes: [
+              GoRoute(
+                name: RegisterPage.path,
+                path: RegisterPage.path,
+                builder: (context, state) => const RegisterPage(),
+              ),
+            ],
           ),
         ],
       ),

@@ -57,7 +57,7 @@ class AccountView extends StatelessWidget {
                     PrimaryTextField(
                       enabled: false,
                       controller: TextEditingController(
-                        text: format.format(user.createdAt),
+                        text: format.format(user.createdAt!),
                       ),
                     ),
                     const SizedBox(height: 8),

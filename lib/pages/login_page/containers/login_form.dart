@@ -43,6 +43,7 @@ class LoginForm extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             PrimaryTextField(
+              obscure: true,
               controller: cubit.password,
               hint: 'password'.tr(),
             ),

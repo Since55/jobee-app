@@ -1,14 +1,14 @@
 class UserData {
-  final int id;
+  final int? id;
   final String email;
   final String? name;
   final String userId;
   final String? image;
   final String? phone;
-  final DateTime createdAt;
+  final DateTime? createdAt;
 
   UserData({
-    required this.id,
+    this.id,
     required this.email,
     this.name,
     required this.userId,
@@ -39,13 +39,13 @@ class UserData {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'email': email,
       'name': name,
       'user_id': userId,
       'image': image,
       'phone': phone,
-      'created_at': createdAt.millisecondsSinceEpoch,
+      if (id != null) 'id': id,
+      if (createdAt != null) 'created_at': createdAt.toString(),
     };
   }
 

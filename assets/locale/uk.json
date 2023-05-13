@@ -35,5 +35,8 @@
     "deadline": "Крайній термін виконання",
     "description": "Опис",
     "create": "Створити",
-    "account": "Аккаунт"
+    "account": "Аккаунт",
+    "full_name": "Імʼя та Прізвище",
+    "phone": "Телефон",
+    "no_applications": "Немає заявок"
 }
