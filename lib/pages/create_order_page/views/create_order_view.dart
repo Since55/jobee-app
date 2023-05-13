@@ -42,8 +42,10 @@ class CreateOrderView extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(16.0).copyWith(top: 0),
           child: PrimaryButton(
-            disabled: !state.isValid,
             text: 'create'.tr(),
+            disabled: !state.isValid,
+            loading: state.isLoading,
+            onTap: () => cubit.onCreate(context),
           ),
         )
       ],

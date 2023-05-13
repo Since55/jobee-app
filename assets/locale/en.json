@@ -27,5 +27,13 @@
     "applications": "Applications",
     "close_order": "Close order",
     "reopen_order": "Reopen order",
-    "create_order": "Create order"
+    "create_order": "Create order",
+    "price": "Price",
+    "title": "Title",
+    "location": "Location",
+    "category": "Category",
+    "deadline": "Deadline",
+    "description": "Description",
+    "create": "Create",
+    "account": "Account"
 }

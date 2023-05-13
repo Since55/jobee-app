@@ -49,6 +49,7 @@ class OrderApi {
         .from('orders')
         .select('*')
         .eq('user_id', ApiClient.client.auth.currentUser?.id)
+        .order('created_at')
         .withConverter<List<Order>>(
           (data) => (data as List)
               .map((e) => Order.fromMap(e as Map<String, dynamic>))
@@ -56,6 +57,10 @@ class OrderApi {
         );
 
     return result;
+  }
+
+  static Future<void> createOrder(Order order) async {
+    await ApiClient.client.from('orders').insert(order.toMap());
   }
 
   static Future<Order> getOrder(int orderId) async {

@@ -1,5 +1,5 @@
 class Order {
-  final int id;
+  final int? id;
   final num? price;
   final bool active;
   final String userId;
@@ -14,7 +14,7 @@ class Order {
 
   Order({
     this.active = true,
-    required this.id,
+    this.id,
     required this.userId,
     required this.categoryId,
     required this.icon,
@@ -59,7 +59,7 @@ class Order {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      if (id != null) 'id': id,
       'user_id': userId,
       'category_id': categoryId,
       'icon': icon,
@@ -69,8 +69,8 @@ class Order {
       'location': location,
       'description': description,
       'active': active,
-      'deadline': deadline?.millisecondsSinceEpoch,
-      'created_at': createdAt.millisecondsSinceEpoch,
+      'deadline': deadline?.toString(),
+      'created_at': createdAt.toString(),
     };
   }
 

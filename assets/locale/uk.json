@@ -27,5 +27,13 @@
     "applications": "Заявки",
     "close_order": "Закрити замовлення",
     "reopen_order": "Відкрити замовлення",
-    "create_order": "Створити замовлення"
+    "create_order": "Створити замовлення",
+    "price": "Вартість",
+    "title": "Назва",
+    "location": "Локація",
+    "category": "Категорія",
+    "deadline": "Крайній термін виконання",
+    "description": "Опис",
+    "create": "Створити",
+    "account": "Аккаунт"
 }

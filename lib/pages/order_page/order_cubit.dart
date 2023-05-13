@@ -84,7 +84,7 @@ class OrderCubit extends Cubit<OrderState> {
   Future<void> toggleOrder() async {
     final newOrder = state.order!.copyWith(active: !state.order!.active);
 
-    await OrderApi.toggleOrderStatus(newOrder.id, newOrder.active);
+    await OrderApi.toggleOrderStatus(newOrder.id!, newOrder.active);
 
     emit(state.copyWith(order: newOrder));
   }

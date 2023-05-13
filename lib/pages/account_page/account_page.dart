@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobee_app/cubits/auth/auth_cubit.dart';
@@ -16,7 +15,7 @@ class AccountPage extends StatelessWidget {
     if (!isLoggedIn) return const LoginPage();
 
     return BlocProvider(
-      create: (context) => AccountCubit(),
+      create: (context) => AccountCubit()..init(),
       child: const AccountView(),
     );
   }

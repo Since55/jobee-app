@@ -53,7 +53,7 @@ class ApplyCubit extends Cubit<ApplyState> {
   Application _createApplication() {
     return Application(
       userName: _authCubit.state.userData?.name ?? '',
-      orderId: state.order!.id,
+      orderId: state.order!.id!,
       text: textController.text,
       forUserId: state.order!.userId,
       contacts: contactsController.text,
