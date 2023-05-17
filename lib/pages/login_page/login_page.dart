@@ -4,7 +4,7 @@ import 'package:jobee_app/pages/login_page/login_cubit.dart';
 import 'package:jobee_app/pages/login_page/views/login_view.dart';
 
 class LoginPage extends StatelessWidget {
-  static const path = '/login';
+  static const path = 'login';
   const LoginPage({super.key});
 
   @override

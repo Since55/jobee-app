@@ -93,6 +93,11 @@ class AppRouter {
                 path: RegisterPage.path,
                 builder: (context, state) => const RegisterPage(),
               ),
+              GoRoute(
+                name: LoginPage.path,
+                path: LoginPage.path,
+                builder: (context, state) => const LoginPage(),
+              ),
             ],
           ),
         ],

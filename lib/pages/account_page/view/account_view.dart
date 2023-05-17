@@ -68,7 +68,7 @@ class AccountView extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             PrimaryButton(
-              onTap: cubit.logout,
+              onTap: () => cubit.logout(context),
               text: 'logout'.tr(),
             ),
           ],

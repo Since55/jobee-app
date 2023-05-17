@@ -1,8 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jobee_app/cubits/auth/auth_cubit.dart';
 import 'package:jobee_app/cubits/auth/auth_state.dart';
 import 'package:jobee_app/cubits/provider.dart';
 import 'package:jobee_app/models/user.dart';
+import 'package:jobee_app/pages/login_page/login_page.dart';
 import 'package:jobee_app/utils/bloc_utils.dart';
 
 class AccountState {
@@ -33,7 +36,8 @@ class AccountCubit extends Cubit<AccountState> with BlocStateProviderMixin {
     emit(this.state.copyWith(user: state.userData));
   }
 
-  Future<void> logout() async {
+  Future<void> logout(BuildContext context) async {
     await _authCubit.logout();
+    if (context.mounted) context.goNamed(LoginPage.path);
   }
 }
