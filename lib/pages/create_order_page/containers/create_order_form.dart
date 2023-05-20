@@ -22,55 +22,52 @@ class CreateOrderForm extends StatelessWidget {
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: ContentBox(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: PrimaryTextField(
-                        controller: cubit.priceCtrl,
-                        hint: 'price'.tr(),
-                        prefix: const Text('₴'),
-                        keyboardType: TextInputType.number,
-                        formatters: [FilteringTextInputFormatter.digitsOnly],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                PrimaryTextField(
-                  controller: cubit.titleCtrl,
-                  hint: 'title'.tr(),
-                ),
-                const SizedBox(height: 8),
-                PrimaryTextField(
-                  controller: cubit.locationCtrl,
-                  hint: 'location'.tr(),
-                ),
-                const SizedBox(height: 8),
-                const CategoryPicker(),
-                const SizedBox(height: 8),
-                PrimaryTextField(
-                  controller: cubit.deadlineCtrl,
-                  keyboardType: TextInputType.none,
-                  formatters: [FilteringTextInputFormatter.deny('*')],
-                  onTap: () => cubit.onSelectDeadline(context),
-                  hint: 'deadline'.tr(),
-                  suffix: GestureDetector(
-                    onTap: cubit.onRemoveDeadline,
-                    child: const Icon(Icons.close),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1000),
+            child: ContentBox(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  PrimaryTextField(
+                    controller: cubit.priceCtrl,
+                    hint: 'price'.tr(),
+                    prefix: const Text('₴'),
+                    keyboardType: TextInputType.number,
+                    formatters: [FilteringTextInputFormatter.digitsOnly],
                   ),
-                  enabled: false,
-                ),
-                const SizedBox(height: 8),
-                PrimaryTextField(
-                  controller: cubit.descriptionCtrl,
-                  hint: 'description'.tr(),
-                  maxLines: 15,
-                ),
-              ],
+                  const SizedBox(height: 8),
+                  PrimaryTextField(
+                    controller: cubit.titleCtrl,
+                    hint: 'title'.tr(),
+                  ),
+                  const SizedBox(height: 8),
+                  PrimaryTextField(
+                    controller: cubit.locationCtrl,
+                    hint: 'location'.tr(),
+                  ),
+                  const SizedBox(height: 8),
+                  const CategoryPicker(),
+                  const SizedBox(height: 8),
+                  PrimaryTextField(
+                    controller: cubit.deadlineCtrl,
+                    keyboardType: TextInputType.none,
+                    formatters: [FilteringTextInputFormatter.deny('*')],
+                    onTap: () => cubit.onSelectDeadline(context),
+                    hint: 'deadline'.tr(),
+                    suffix: GestureDetector(
+                      onTap: cubit.onRemoveDeadline,
+                      child: const Icon(Icons.close),
+                    ),
+                    enabled: false,
+                  ),
+                  const SizedBox(height: 8),
+                  PrimaryTextField(
+                    controller: cubit.descriptionCtrl,
+                    hint: 'description'.tr(),
+                    maxLines: 15,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -88,6 +85,7 @@ class CategoryPicker extends StatelessWidget {
     final state = cubit.state;
     final categories = state.categories;
     return Container(
+      constraints: const BoxConstraints(maxWidth: 600),
       padding: const EdgeInsets.symmetric(horizontal: 16),
       width: double.infinity,
       decoration: BoxDecoration(

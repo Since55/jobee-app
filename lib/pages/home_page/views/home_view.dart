@@ -16,15 +16,30 @@ class HomeView extends StatelessWidget {
         children: [
           const HomeSearch(),
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              children: const [
-                SizedBox(height: 16),
-                HomeCategories(),
-                SizedBox(height: 16),
-                RecentOrders(),
-                SizedBox(height: 84),
-              ],
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 16),
+                    Center(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 1000),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: const [
+                            HomeCategories(),
+                            SizedBox(height: 16),
+                            RecentOrders(),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 84),
+                  ],
+                ),
+              ),
             ),
           ),
         ],

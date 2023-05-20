@@ -24,11 +24,12 @@ class OrderView extends StatelessWidget {
         return SafeArea(
           top: false,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ContentBox(
                         borderRadius: BorderRadius.circular(0),
@@ -52,73 +53,80 @@ class OrderView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
+                      const SizedBox(height: 16),
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 1000),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: ContentBox(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                if (order.price != null) ...[
+                                Row(
+                                  children: [
+                                    if (order.price != null) ...[
+                                      ContentBox(
+                                        color: AppTheme.colors.primaryColor,
+                                        child: Text(
+                                          '${order.price!} ₴',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color:
+                                                AppTheme.colors.primaryBgColor,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 8),
+                                    ],
+                                    ContentBox(
+                                      child: Text(
+                                        '${'published'.tr()} ${dateFormat.format(order.createdAt)}',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: AppTheme.colors.primaryBgColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                if (order.deadline != null) ...[
+                                  const SizedBox(height: 8),
                                   ContentBox(
                                     color: AppTheme.colors.primaryColor,
                                     child: Text(
-                                      '${order.price!} ₴',
+                                      '${'due_by'.tr()} ${dateFormat.format(order.deadline!)}',
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         color: AppTheme.colors.primaryBgColor,
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(width: 8),
                                 ],
+                                const SizedBox(height: 8),
                                 ContentBox(
                                   child: Text(
-                                    '${'published'.tr()} ${dateFormat.format(order.createdAt)}',
+                                    order.description,
                                     style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 16,
                                       color: AppTheme.colors.primaryBgColor,
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
-                            if (order.deadline != null) ...[
-                              const SizedBox(height: 8),
-                              ContentBox(
-                                color: AppTheme.colors.primaryColor,
-                                child: Text(
-                                  '${'due_by'.tr()} ${dateFormat.format(order.deadline!)}',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: AppTheme.colors.primaryBgColor,
+                                const SizedBox(height: 8),
+                                ContentBox(
+                                  child: Text(
+                                    order.location,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: AppTheme.colors.primaryBgColor,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                            const SizedBox(height: 8),
-                            ContentBox(
-                              child: Text(
-                                order.description,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: AppTheme.colors.primaryBgColor,
-                                ),
-                              ),
+                                const SizedBox(height: 8),
+                                const AuthorCard(),
+                              ],
                             ),
-                            const SizedBox(height: 8),
-                            ContentBox(
-                              child: Text(
-                                order.location,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: AppTheme.colors.primaryBgColor,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            const AuthorCard(),
-                          ],
+                          ),
                         ),
                       ),
                       if (cubit.isAuthor)

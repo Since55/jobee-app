@@ -11,10 +11,13 @@ class OrdersList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (orders.isEmpty) return const NoOrders();
-    return ListView.builder(
-      padding: EdgeInsets.zero,
-      itemCount: orders.length,
-      itemBuilder: (context, index) => OrderCard(orders[index]),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 1000),
+      child: ListView.builder(
+        padding: EdgeInsets.zero,
+        itemCount: orders.length,
+        itemBuilder: (context, index) => OrderCard(orders[index]),
+      ),
     );
   }
 }

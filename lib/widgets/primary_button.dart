@@ -128,6 +128,7 @@ class PrimaryButton extends StatelessWidget {
 
     return AnimatedContainer(
       height: 52,
+      constraints: const BoxConstraints(maxWidth: 400),
       width: double.infinity,
       margin: margin ?? EdgeInsets.zero,
       duration: const Duration(milliseconds: 200),

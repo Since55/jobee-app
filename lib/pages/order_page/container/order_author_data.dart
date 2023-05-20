@@ -18,34 +18,37 @@ class OrderAuthorData extends StatelessWidget {
     final applications = cubit.state.applications;
 
     if (applications == null) return const Loader();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        PrimaryButton(
-          onTap: cubit.toggleOrder,
-          text: order!.active ? 'close_order'.tr() : 'reopen_order'.tr(),
-        ),
-        const SizedBox(height: 32),
-        if (applications.isEmpty)
-          const NoApplications()
-        else ...[
-          Text(
-            'applications'.tr(),
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 1000),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          PrimaryButton(
+            onTap: cubit.toggleOrder,
+            text: order!.active ? 'close_order'.tr() : 'reopen_order'.tr(),
           ),
-          const SizedBox(height: 8),
-          ContentBox(
-            padding: const EdgeInsets.all(16.0),
-            child: ApplicationsList(
-              cubit.state.applications!,
-              physics: const NeverScrollableScrollPhysics(),
+          const SizedBox(height: 32),
+          if (applications.isEmpty)
+            const NoApplications()
+          else ...[
+            Text(
+              'applications'.tr(),
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-        ]
-      ],
+            const SizedBox(height: 8),
+            ContentBox(
+              padding: const EdgeInsets.all(16.0),
+              child: ApplicationsList(
+                cubit.state.applications!,
+                physics: const NeverScrollableScrollPhysics(),
+              ),
+            ),
+          ]
+        ],
+      ),
     );
   }
 }

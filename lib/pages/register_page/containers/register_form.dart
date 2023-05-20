@@ -16,31 +16,34 @@ class RegisterForm extends StatelessWidget {
       onChanged: cubit.validate,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ContentBox(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              PrimaryTextField(
-                controller: cubit.nameCtrl,
-                hint: 'full_name'.tr(),
-              ),
-              const SizedBox(height: 8),
-              PrimaryTextField(
-                controller: cubit.phoneCtrl,
-                hint: 'phone'.tr(),
-              ),
-              const SizedBox(height: 8),
-              PrimaryTextField(
-                controller: cubit.emailCtrl,
-                hint: 'email'.tr(),
-              ),
-              const SizedBox(height: 8),
-              PrimaryTextField(
-                obscure: true,
-                controller: cubit.passwordCtrl,
-                hint: 'password'.tr(),
-              ),
-            ],
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1000),
+          child: ContentBox(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                PrimaryTextField(
+                  controller: cubit.nameCtrl,
+                  hint: 'full_name'.tr(),
+                ),
+                const SizedBox(height: 8),
+                PrimaryTextField(
+                  controller: cubit.phoneCtrl,
+                  hint: 'phone'.tr(),
+                ),
+                const SizedBox(height: 8),
+                PrimaryTextField(
+                  controller: cubit.emailCtrl,
+                  hint: 'email'.tr(),
+                ),
+                const SizedBox(height: 8),
+                PrimaryTextField(
+                  obscure: true,
+                  controller: cubit.passwordCtrl,
+                  hint: 'password'.tr(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
